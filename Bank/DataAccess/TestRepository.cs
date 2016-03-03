@@ -24,9 +24,9 @@ namespace Bank.DataAccess
             return Users;
         }
 
-        public IEnumerable<Account> GetAccounts()
+        public IEnumerable<Account> GetAccounts(int userId)
         {
-            return Accounts;
+            return Users.Find(u => u.Id == userId).Accounts;
         }
 
         public IEnumerable<Transaction> GetTransactions()

@@ -33,9 +33,16 @@ namespace Bank.Controllers
             return View(repo.GetUsers());
         }
 
-        public ViewResult Account(int? id)
+        public ViewResult Account(int id)
         {
-            return View(new List<Account>());
+            return View(repo.GetAccounts(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddUser(string name)
+        {
+            return RedirectToAction("Index");
         }
     }
 }

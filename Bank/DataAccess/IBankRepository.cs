@@ -10,7 +10,7 @@ namespace Bank.DataAccess
     public interface IBankRepository : IDisposable
     {
         IEnumerable<User> GetUsers();
-        IEnumerable<Account> GetAccounts();
+        IEnumerable<Account> GetAccounts(int userId);
         IEnumerable<Transaction> GetTransactions();
     }
 }
