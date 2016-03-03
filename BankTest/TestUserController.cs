@@ -15,7 +15,7 @@ namespace BankTest
         [TestMethod]
         public void TestList()
         {
-            using (var repo = new TestRepository())
+            using (var repo = new MockRepository())
             {
                 repo.Users.AddRange(new[] {
                     new User { Id = 1, Name = "John" },
@@ -38,7 +38,7 @@ namespace BankTest
         [TestMethod]
         public void TestAccounts()
         {
-            using (var repo = new TestRepository())
+            using (var repo = new MockRepository())
             {
                 var u1 = new User { Id = 1, Name = "John" };
                 var u2 = new User { Id = 2, Name = "Jane" };
@@ -66,20 +66,41 @@ namespace BankTest
         }
 
         [TestMethod]
-        public void TestAddUser()
+        public void TestCreateUser()
         {
-            using (var repo = new TestRepository())
+            using (var repo = new MockRepository())
             {
                 using (var c = new UserController(repo))
                 {
                     Assert.AreEqual(0, repo.GetUsers().Count());
 
-                    c.AddUser("John");
+                    c.CreateUser("John");
 
                     var users = repo.GetUsers();
 
                     Assert.AreEqual(1, users.Count());
                     Assert.AreEqual("John", users.First().Name);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestCreateAccount()
+        {
+            using (var repo = new MockRepository())
+            {
+                using (var c = new UserController(repo))
+                {
+                    var user = repo.CreateUser("John");
+
+                    Assert.AreEqual(0, repo.GetAccounts(user.Id).Count());
+
+                    c.CreateAccount(user.Id);
+
+                    var accounts = repo.GetAccounts(user.Id);
+
+                    Assert.AreEqual(1, accounts.Count());
+                    Assert.AreEqual(0, accounts.First().Balance);
                 }
             }
         }

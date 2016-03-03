@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Bank.DataAccess
 {
-    public class TestRepository : IBankRepository
+    public class MockRepository : IBankRepository
     {
         public List<User> Users { get; set; }
         public List<Account> Accounts { get; set; }
@@ -20,7 +20,7 @@ namespace Bank.DataAccess
         {
         }
 
-        public TestRepository()
+        public MockRepository()
         {
             Users = new List<User>();
             Accounts = new List<Account>();
@@ -42,12 +42,21 @@ namespace Bank.DataAccess
             return Transactions;
         }
 
-        public User AddUser(string name)
+        public User CreateUser(string name)
         {
-            var u = new User { Id = lastAccountId, Name = name };
-            ++lastAccountId;
+            var u = new User { Id = lastUserId, Name = name };
+            ++lastUserId;
             Users.Add(u);
             return u;
+        }
+
+        public Account CreateAccount(int userId)
+        {
+            var a = new Account { Id = lastAccountId, UserId = userId };
+            ++lastAccountId;
+            Accounts.Add(a);
+            Users.Find(u => u.Id == userId).Accounts.Add(a);
+            return a;
         }
     }
 }

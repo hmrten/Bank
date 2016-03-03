@@ -13,6 +13,7 @@ namespace Bank.DataAccess
         IEnumerable<Account> GetAccounts(int userId);
         IEnumerable<Transaction> GetTransactions();
 
-        User AddUser(string name);
+        User CreateUser(string name);
+        Account CreateAccount(int userId);
     }
 }

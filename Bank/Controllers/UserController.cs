@@ -19,7 +19,7 @@ namespace Bank.Controllers
 
         public UserController()
         {
-            repo = new TestRepository();
+            repo = new MockRepository();
         }
 
         // GET: User
@@ -40,9 +40,17 @@ namespace Bank.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddUser(string name)
+        public ActionResult CreateUser(string name)
         {
-            repo.AddUser(name);
+            repo.CreateUser(name);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAccount(int userId)
+        {
+            repo.CreateAccount(userId);
             return RedirectToAction("Index");
         }
     }

@@ -117,7 +117,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataAccess\BankContext.cs" />
     <Compile Include="DataAccess\IBankRepository.cs" />
-    <Compile Include="DataAccess\TestRepository.cs" />
+    <Compile Include="DataAccess\MockRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
