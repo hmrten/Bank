@@ -76,7 +76,10 @@ namespace BankTest
 
                     c.AddUser("John");
 
-                    Assert.AreEqual(1, repo.GetUsers().Count());
+                    var users = repo.GetUsers();
+
+                    Assert.AreEqual(1, users.Count());
+                    Assert.AreEqual("John", users.First().Name);
                 }
             }
         }

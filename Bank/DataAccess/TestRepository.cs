@@ -12,6 +12,14 @@ namespace Bank.DataAccess
         public List<Account> Accounts { get; set; }
         public List<Transaction> Transactions { get; set; }
 
+        private int lastUserId = 1;
+        private int lastAccountId = 1;
+        private int lastTransactionId = 1;
+
+        public void Dispose()
+        {
+        }
+
         public TestRepository()
         {
             Users = new List<User>();
@@ -34,8 +42,12 @@ namespace Bank.DataAccess
             return Transactions;
         }
 
-        public void Dispose()
+        public User AddUser(string name)
         {
+            var u = new User { Id = lastAccountId, Name = name };
+            ++lastAccountId;
+            Users.Add(u);
+            return u;
         }
     }
 }

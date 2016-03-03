@@ -42,6 +42,7 @@ namespace Bank.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddUser(string name)
         {
+            repo.AddUser(name);
             return RedirectToAction("Index");
         }
     }
