@@ -32,5 +32,10 @@ namespace Bank.Controllers
         {
             return View(repo.GetUsers());
         }
+
+        public ViewResult Account(int? id)
+        {
+            return View(new List<Account>());
+        }
     }
 }

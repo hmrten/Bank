@@ -34,5 +34,31 @@ namespace BankTest
                 }
             }
         }
+
+        [TestMethod]
+        public void TestAccounts()
+        {
+            using (var repo = new TestRepository())
+            {
+                repo.Users.AddRange(new[] {
+                    new User { Id = 1, Name = "John" },
+                    new User { Id = 2, Name = "Jane" }
+                });
+
+                repo.Accounts.AddRange(new[] {
+                    new Account { Id = 1, UserId = 1, IsLocked = false, Balance = 0 },
+                    new Account { Id = 2, UserId = 1, IsLocked = false, Balance = 0 },
+                    new Account { Id = 3, UserId = 2, IsLocked = false, Balance = 0 }
+                });
+
+                using (var c = new UserController(repo))
+                {
+                    var view = c.Account(null);
+                    var model = view.Model as IEnumerable<Account>;
+
+                    Assert.AreEqual(3, model.Count());
+                }
+            }
+        }
     }
 }

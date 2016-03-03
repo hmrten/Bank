@@ -15,8 +15,7 @@ namespace Bank.Models
         [Required]
         public int AccountToId { get; set; }
 
-        [Required]
-        public int AccountFromId { get; set; }
+        public int? AccountFromId { get; set; }
 
         [Required]
         public decimal Amount { get; set; }

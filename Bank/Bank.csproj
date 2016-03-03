@@ -117,6 +117,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603031252424_v1.cs" />
+    <Compile Include="Migrations\201603031252424_v1.Designer.cs">
+      <DependentUpon>201603031252424_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User.cs" />
@@ -135,6 +140,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603031252424_v1.resx">
+      <DependentUpon>201603031252424_v1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
