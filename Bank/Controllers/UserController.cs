@@ -30,7 +30,7 @@ namespace Bank.Controllers
 
         public ViewResult List()
         {
-            return View(new List<User>());
+            return View(repo.GetUsers());
         }
     }
 }

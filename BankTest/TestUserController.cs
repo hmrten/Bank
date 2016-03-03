@@ -27,6 +27,10 @@ namespace BankTest
                     var model = view.Model as IEnumerable<User>;
 
                     Assert.AreEqual(2, model.Count());
+                    Assert.AreEqual(1, model.First().Id);
+                    Assert.AreEqual("John", model.First().Name);
+                    Assert.AreEqual(2, model.Last().Id);
+                    Assert.AreEqual("Jane", model.Last().Name);
                 }
             }
         }
