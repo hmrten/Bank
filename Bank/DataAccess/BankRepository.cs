@@ -63,11 +63,10 @@ namespace Bank.DataAccess
             return SetLockState(id, false);
         }
 
-        public Account DeleteAccount(int id)
+        public void DeleteAccount(Account account)
         {
-            var a = db.Accounts.Remove(new Account { Id = id });
+            db.Accounts.Remove(account);
             db.SaveChanges();
-            return a;
         }
     }
 }

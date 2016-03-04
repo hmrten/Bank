@@ -56,11 +56,5 @@ namespace Bank.Controllers
             ViewBag.userName = repo.GetUsers().Where(u => u.Id == id).SingleOrDefault().Name;
             return View(repo.GetAccounts(id));
         }
-
-        public ActionResult NewAccount(int id)
-        {
-            repo.CreateAccount(id);
-            return RedirectToAction("Accounts", new { id = id });
-        }
     }
 }

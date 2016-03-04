@@ -15,7 +15,7 @@ namespace Bank.DataAccess
 
         Account LockAccount(int id);
         Account UnlockAccount(int id);
-        Account DeleteAccount(int id);
+        void DeleteAccount(Account account);
 
         User CreateUser(string name);
         Account CreateAccount(int userId);

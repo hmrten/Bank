@@ -10,10 +10,10 @@ using System.Linq;
 namespace BankTest
 {
     [TestClass]
-    public class TestRepository
+    public class TestMockRepository
     {
         [TestMethod]
-        public void TestGetUsersEmpty()
+        public void GetUsers_InitiallyEmpty()
         {
             using (var repo = new MockRepository())
             {
@@ -23,7 +23,7 @@ namespace BankTest
         }
 
         [TestMethod]
-        public void TestGetUsersAfterAddingOne()
+        public void GetUsers_IncreasesByOneAfterAdding()
         {
             using (var repo = new MockRepository())
             {
@@ -37,7 +37,7 @@ namespace BankTest
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void TestGetAccountsEmpty()
+        public void GetAccounts_ThrowsNullExceptionForNonExistentUser()
         {
             using (var repo = new MockRepository())
             {
@@ -46,7 +46,7 @@ namespace BankTest
         }
 
         [TestMethod]
-        public void TestGetAccountsAfterAddingOne()
+        public void GetAccounts_AfterAddingOne()
         {
             using (var repo = new MockRepository())
             {

@@ -13,7 +13,7 @@ namespace BankTest
     public class TestUserController
     {
         [TestMethod]
-        public void TestList()
+        public void List_ReturnsTwoUsers()
         {
             using (var repo = new MockRepository())
             {
@@ -36,7 +36,7 @@ namespace BankTest
         }
 
         [TestMethod]
-        public void TestAccounts()
+        public void Account_ReturnsTwoInViewResultModel()
         {
             using (var repo = new MockRepository())
             {
@@ -66,7 +66,7 @@ namespace BankTest
         }
 
         [TestMethod]
-        public void TestCreateUser()
+        public void Create_AddsNewUser()
         {
             using (var repo = new MockRepository())
             {

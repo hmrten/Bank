@@ -1,4 +1,5 @@
 ﻿using Bank.DataAccess;
+using Bank.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,21 +22,27 @@ namespace Bank.Controllers
             repo = new BankRepository();
         }
 
-        public ActionResult Lock(int id)
+        public RedirectToRouteResult Create(int id)
+        {
+            repo.CreateAccount(id);
+            return RedirectToAction("Accounts", "User", new { id = id });
+        }
+
+        public RedirectToRouteResult Lock(int id)
         {
             var account = repo.LockAccount(id);
             return RedirectToAction("Accounts", "User", new { id = account.UserId });
         }
 
-        public ActionResult Unlock(int id)
+        public RedirectToRouteResult Unlock(int id)
         {
             var account = repo.UnlockAccount(id);
             return RedirectToAction("Accounts", "User", new { id = account.UserId });
         }
 
-        public ActionResult Delete(int id)
+        public RedirectToRouteResult Delete(Account account)
         {
-            var account = repo.DeleteAccount(id);
+            repo.DeleteAccount(account);
             return RedirectToAction("Accounts", "User", new { id = account.UserId });
         }
     }
