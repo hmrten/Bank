@@ -69,7 +69,19 @@ namespace Bank.DataAccess
             throw new NotImplementedException();
         }
 
-        public void DeleteAccount(Account account)
+        public Account DeleteAccount(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Deposit(int accountId, decimal amount)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public Account GetAccount(int id)
         {
             throw new NotImplementedException();
         }

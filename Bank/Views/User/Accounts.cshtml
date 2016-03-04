@@ -40,16 +40,16 @@
                 @Html.DisplayFor(modelItem => item.Balance)
             </td>
             <td>
-                @Html.ActionLink("Transactions", "Transactions", "Bank", new { id = item.Id }, null) |
-                @Html.ActionLink("Deposit", "Deposit", "Account", new { id = item.Id }, null) |
-                @Html.ActionLink("Withdraw", "Withdraw", "Account", new { id = item.Id }, null) |
+                @Html.ActionLink("History", "History", "Bank", new { id = item.Id }, null) |
+                @Html.ActionLink("Deposit", "Deposit", "Bank", new { id = item.Id }, null) |
+                @Html.ActionLink("Withdraw", "Withdraw", "Bank", new { id = item.Id }, null) |
                 @Html.ActionLink("Transfer", "Transfer", "Bank", new { id = item.Id }, null) |
                 @if (item.IsLocked) {
                     @Html.ActionLink("Unlock", "Unlock", "Account", new { id = item.Id }, null)
                 } else {
                     @Html.ActionLink("Lock", "Lock", "Account", new { id = item.Id }, null)
                 }
-                 | @Html.ActionLink("Delete", "Delete", "Account", new { account = item }, null)
+                 | @Html.ActionLink("Delete", "Delete", "Account", new { id = item.Id }, null)
             </td>
         </tr>
     }

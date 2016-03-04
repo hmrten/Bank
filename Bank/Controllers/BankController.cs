@@ -26,10 +26,15 @@ namespace Bank.Controllers
             return View();
         }
 
-        [HttpPut]
-        public ActionResult Withdraw(int accountId, decimal amount)
+        public ViewResult Deposit()
         {
-            return RedirectToAction("Index");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Deposit(int accountId, decimal amount)
+        {
+            return View();
         }
     }
 }

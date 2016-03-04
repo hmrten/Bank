@@ -142,6 +142,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Bank\Index.cshtml" />
     <Content Include="Views\User\Accounts.cshtml" />
+    <Content Include="Views\Bank\Deposit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603031252424_v1.resx">

@@ -66,50 +66,28 @@ namespace BankTest
             Assert.AreEqual("User", dict["controller"]);
         }
 
-        private IBankRepository DefaultArrange()
-        {
-            var repo = Mock.Create<IBankRepository>();
-
-            var u1 = new User { Id = 1, Name = "John" };
-            var u2 = new User { Id = 2, Name = "Jane" };
-            var a1 = new Account { Id = 1, UserId = 1 };
-            var a2 = new Account { Id = 2, UserId = 1 };
-            var a3 = new Account { Id = 3, UserId = 2 };
-            u1.Accounts.Add(a1);
-            u1.Accounts.Add(a2);
-            u2.Accounts.Add(a3);
-
-            Mock.Arrange(() => repo.GetUsers())
-                .Returns(new[] { u1, u2 }.AsQueryable());
-
-            Mock.Arrange(() => repo.GetAccounts(1))
-                .Returns(new[] { a1, a2 }.AsQueryable());
-
-            Mock.Arrange(() => repo.GetAccounts(2))
-                .Returns(new[] { a3 }.AsQueryable());
-
-            return repo;
-        }
-
         [TestMethod]
         public void Lock_SetIsLockedToTrue()
         {
-            var repo = DefaultArrange();
+            var repo = Arrange.Default();
+            int uid = 1;
+            int aid = 1;
+
             var accounts = repo.GetUsers()
-                .Where(u => u.Id == 1)
+                .Where(u => u.Id == uid)
                 .SingleOrDefault()
                 .Accounts;
             Mock.Arrange(() => repo.LockAccount(1))
-                .DoInstead((int id) => accounts.Where(a => a.Id == 1).SingleOrDefault().IsLocked = true)
-                .Returns(accounts.Where(a => a.Id == 1).SingleOrDefault())
+                .DoInstead((int id) => accounts.Where(a => a.Id == aid).SingleOrDefault().IsLocked = true)
+                .Returns(accounts.Where(a => a.Id == aid).SingleOrDefault())
                 .MustBeCalled();
 
             var c = new AccountController(repo);
 
-            var actual = repo.GetAccounts(1).First();
+            var actual = repo.GetAccounts(uid).First();
 
             Assert.AreEqual(false, actual.IsLocked);
-            c.Lock(1);
+            c.Lock(aid);
             Assert.AreEqual(true, actual.IsLocked);
             Mock.Assert(repo);
         }

@@ -13,11 +13,14 @@ namespace Bank.DataAccess
         IQueryable<Account> GetAccounts(int userId);
         IQueryable<Transaction> GetTransactions();
 
+        Account GetAccount(int id);
         Account LockAccount(int id);
         Account UnlockAccount(int id);
-        void DeleteAccount(Account account);
+        Account DeleteAccount(int id);
 
         User CreateUser(string name);
         Account CreateAccount(int userId);
+
+        void Deposit(int accountId, decimal amount);
     }
 }

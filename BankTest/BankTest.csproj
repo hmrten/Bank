@@ -89,6 +89,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Arrange.cs" />
     <Compile Include="TestAccountController.cs" />
     <Compile Include="TestBankController.cs" />
     <Compile Include="TestMockRepository.cs" />

@@ -40,9 +40,9 @@ namespace Bank.Controllers
             return RedirectToAction("Accounts", "User", new { id = account.UserId });
         }
 
-        public RedirectToRouteResult Delete(Account account)
+        public RedirectToRouteResult Delete(int id)
         {
-            repo.DeleteAccount(account);
+            var account = repo.DeleteAccount(id);
             return RedirectToAction("Accounts", "User", new { id = account.UserId });
         }
     }
