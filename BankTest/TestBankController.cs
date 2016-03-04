@@ -22,10 +22,7 @@ namespace BankTest
             int uid = 1;
             Mock.Arrange(() => repo.Deposit(Arg.AnyInt, Arg.AnyDecimal))
                 .DoInstead((int aid, decimal amount) =>
-                    repo.GetAccounts(uid)
-                    .Where(x => x.Id == aid)
-                    .SingleOrDefault()
-                    .Balance += amount)
+                    repo.GetAccount(aid).Balance += amount)
                 .MustBeCalled();
 
             var bc = new BankController(repo);
@@ -34,7 +31,7 @@ namespace BankTest
 
             Assert.AreEqual(0, account.Balance);
             bc.Deposit(account.Id, 1000m);
-            Assert.AreEqual(100m, account.Balance);
+            Assert.AreEqual(1000m, account.Balance);
             Mock.Assert(repo);
         }
     }

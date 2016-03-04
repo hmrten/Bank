@@ -1,4 +1,5 @@
 ﻿using Bank.DataAccess;
+using Bank.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,14 +27,16 @@ namespace Bank.Controllers
             return View();
         }
 
-        public ViewResult Deposit()
+        public ViewResult Deposit(int id)
         {
-            return View();
+            var tr = new Transaction { AccountToId = id };
+            return View(tr);
         }
 
         [HttpPost]
-        public ActionResult Deposit(int accountId, decimal amount)
+        public ActionResult Deposit(int AccountToId, decimal Amount)
         {
+            repo.Deposit(AccountToId, Amount);
             return View();
         }
     }

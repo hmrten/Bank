@@ -33,6 +33,10 @@ namespace BankTest
             Mock.Arrange(() => repo.GetAccounts(2))
                 .Returns(new[] { a3 }.AsQueryable());
 
+            Mock.Arrange(() => repo.GetAccount(1)).Returns(a1);
+            Mock.Arrange(() => repo.GetAccount(2)).Returns(a2);
+            Mock.Arrange(() => repo.GetAccount(3)).Returns(a3);
+
             return repo;
         }
     }

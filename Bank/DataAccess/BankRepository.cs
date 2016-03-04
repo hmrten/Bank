@@ -77,7 +77,7 @@ namespace Bank.DataAccess
 
         public Account GetAccount(int id)
         {
-            throw new NotImplementedException();
+            return db.Accounts.Find(id);
         }
     }
 }
