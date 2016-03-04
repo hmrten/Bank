@@ -85,6 +85,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestBankController.cs" />
     <Compile Include="TestRepository.cs" />
     <Compile Include="TestUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

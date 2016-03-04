@@ -113,9 +113,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataAccess\BankContext.cs" />
+    <Compile Include="DataAccess\BankRepository.cs" />
     <Compile Include="DataAccess\IBankRepository.cs" />
     <Compile Include="DataAccess\MockRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -136,7 +138,10 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Bank\Index.cshtml" />
+    <Content Include="Views\User\Accounts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,7 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603031252424_v1.resx">

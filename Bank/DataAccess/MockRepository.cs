@@ -27,19 +27,19 @@ namespace Bank.DataAccess
             Transactions = new List<Transaction>();
         }
 
-        public IEnumerable<User> GetUsers()
+        public IQueryable<User> GetUsers()
         {
-            return Users;
+            return Users.AsQueryable();
         }
 
-        public IEnumerable<Account> GetAccounts(int userId)
+        public IQueryable<Account> GetAccounts(int userId)
         {
-            return Users.Find(u => u.Id == userId).Accounts;
+            return Users.Find(u => u.Id == userId).Accounts.AsQueryable();
         }
 
-        public IEnumerable<Transaction> GetTransactions()
+        public IQueryable<Transaction> GetTransactions()
         {
-            return Transactions;
+            return Transactions.AsQueryable();
         }
 
         public User CreateUser(string name)
@@ -57,6 +57,21 @@ namespace Bank.DataAccess
             Accounts.Add(a);
             Users.Find(u => u.Id == userId).Accounts.Add(a);
             return a;
+        }
+
+        public Account LockAccount(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Account UnlockAccount(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Account DeleteAccount(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

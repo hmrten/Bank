@@ -19,13 +19,12 @@ namespace Bank.Controllers
 
         public UserController()
         {
-            repo = new MockRepository();
+            repo = new BankRepository();
         }
 
-        // GET: User
         public ActionResult Index()
         {
-            return View();
+            return View(repo.GetUsers());
         }
 
         public ViewResult List()
@@ -38,20 +37,30 @@ namespace Bank.Controllers
             return View(repo.GetAccounts(id));
         }
 
+        public ViewResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(string name)
+        public ActionResult Create(string name)
         {
             repo.CreateUser(name);
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateAccount(int userId)
+        public ViewResult Accounts(int id)
         {
-            repo.CreateAccount(userId);
-            return RedirectToAction("Index");
+            ViewBag.userId = id;
+            ViewBag.userName = repo.GetUsers().Where(u => u.Id == id).SingleOrDefault().Name;
+            return View(repo.GetAccounts(id));
+        }
+
+        public ActionResult NewAccount(int id)
+        {
+            repo.CreateAccount(id);
+            return RedirectToAction("Accounts", new { id = id });
         }
     }
 }

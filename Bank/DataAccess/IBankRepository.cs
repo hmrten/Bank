@@ -9,9 +9,13 @@ namespace Bank.DataAccess
 {
     public interface IBankRepository : IDisposable
     {
-        IEnumerable<User> GetUsers();
-        IEnumerable<Account> GetAccounts(int userId);
-        IEnumerable<Transaction> GetTransactions();
+        IQueryable<User> GetUsers();
+        IQueryable<Account> GetAccounts(int userId);
+        IQueryable<Transaction> GetTransactions();
+
+        Account LockAccount(int id);
+        Account UnlockAccount(int id);
+        Account DeleteAccount(int id);
 
         User CreateUser(string name);
         Account CreateAccount(int userId);
