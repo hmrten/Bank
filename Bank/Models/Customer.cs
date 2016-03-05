@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Bank.Models
 {
-    public class User
+    public class Customer
     {
         [Key]
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace Bank.Models
 
         public virtual ICollection<Account> Accounts { get; set; }
 
-        public User()
+        public Customer()
         {
             Accounts = new List<Account>();
         }

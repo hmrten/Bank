@@ -20,8 +20,8 @@ namespace BankTest
         {
             var repo = new MockRepository();
 
-            var u1 = new User { Id = 1, Name = "John" };
-            var u2 = new User { Id = 2, Name = "Jane" };
+            var u1 = new Customer { Id = 1, Name = "John" };
+            var u2 = new Customer { Id = 2, Name = "Jane" };
             var a1 = new Account { Id = 1, UserId = 1 };
             var a2 = new Account { Id = 2, UserId = 1 };
             var a3 = new Account { Id = 3, UserId = 2 };
@@ -43,7 +43,7 @@ namespace BankTest
         public void Create_AddsToAccountList()
         {
             var repo = new MockRepository();
-            var user = new User { Id = 5, Name = "John" };
+            var user = new Customer { Id = 5, Name = "John" };
             repo.Users.Add(user);
             var c = new AccountController(repo);
             c.Create(user.Id);
@@ -55,7 +55,7 @@ namespace BankTest
         public void Create_RedirectsToAccountsUserWithId()
         {
             var repo = new MockRepository();
-            var user = new User { Id = 5, Name = "John" };
+            var user = new Customer { Id = 5, Name = "John" };
             repo.Users.Add(user);
             var c = new AccountController(repo);
             var redirect = c.Create(user.Id);
@@ -100,7 +100,7 @@ namespace BankTest
             
             Mock.Arrange(() => repo.GetUsers())
                 .Returns(new[] {
-                    new User { Id = 1, Name = "John", Accounts = new[] { a1 } }
+                    new Customer { Id = 1, Name = "John", Accounts = new[] { a1 } }
                 }.AsQueryable());
 
             Mock.Arrange(() => repo.GetAccounts(1))

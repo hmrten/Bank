@@ -18,13 +18,13 @@ namespace BankTest
             using (var repo = new MockRepository())
             {
                 repo.Users.AddRange(new[] {
-                    new User { Id = 1, Name = "John" },
-                    new User { Id = 2, Name = "Jane" }
+                    new Customer { Id = 1, Name = "John" },
+                    new Customer { Id = 2, Name = "Jane" }
                 });
                 using (var c = new UserController(repo))
                 {
                     var view = c.List();
-                    var model = view.Model as IEnumerable<User>;
+                    var model = view.Model as IEnumerable<Customer>;
 
                     Assert.AreEqual(2, model.Count());
                     Assert.AreEqual(1, model.First().Id);
@@ -40,8 +40,8 @@ namespace BankTest
         {
             using (var repo = new MockRepository())
             {
-                var u1 = new User { Id = 1, Name = "John" };
-                var u2 = new User { Id = 2, Name = "Jane" };
+                var u1 = new Customer { Id = 1, Name = "John" };
+                var u2 = new Customer { Id = 2, Name = "Jane" };
                 var a1 = new Account { Id = 1, UserId = 1, IsLocked = false, Balance = 0 };
                 var a2 = new Account { Id = 2, UserId = 1, IsLocked = false, Balance = 0 };
                 var a3 = new Account { Id = 3, UserId = 2, IsLocked = false, Balance = 0 };

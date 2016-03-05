@@ -29,7 +29,7 @@ namespace BankTest
             {
                 Assert.AreEqual(0, repo.GetUsers().Count());
 
-                repo.Users.Add(new User { Id = 1, Name = "John" });
+                repo.Users.Add(new Customer { Id = 1, Name = "John" });
 
                 Assert.AreEqual(1, repo.GetUsers().Count());
             }
@@ -50,7 +50,7 @@ namespace BankTest
         {
             using (var repo = new MockRepository())
             {
-                var u = new User { Id = 1, Name = "John" };
+                var u = new Customer { Id = 1, Name = "John" };
                 var a = new Account { Id = 1, UserId = u.Id };
                 repo.Users.Add(u);
                 repo.Users.First().Accounts.Add(a);

@@ -9,13 +9,10 @@ namespace Bank.DataAccess
 {
     public class BankContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        public BankContext() : base("bank")
-        {
-
-        }
+        public BankContext() : base("bank") { }
     }
 }

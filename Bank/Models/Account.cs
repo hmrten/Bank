@@ -12,25 +12,20 @@ namespace Bank.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
         public int UserId { get; set; }
 
-        [Required]
         public bool IsLocked { get; set; }
 
-        [Required]
         public decimal Balance { get; set; }
 
         [ForeignKey("UserId")]
-        public virtual User User { get; set; }
+        public virtual Customer User { get; set; }
 
-        public virtual ICollection<Transaction> TransactionsTo { get; set; }
-        public virtual ICollection<Transaction> TransactionsFrom { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
 
         public Account()
         {
-            TransactionsTo = new List<Transaction>();
-            TransactionsFrom = new List<Transaction>();
+            Transactions = new List<Transaction>();
         }
     }
 }

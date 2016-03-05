@@ -12,23 +12,16 @@ namespace Bank.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public int AccountToId { get; set; }
+        public int AccountId { get; set; }
 
-        public int? AccountFromId { get; set; }
-
-        [Required]
         public decimal Amount { get; set; }
 
-        [Required]
         public DateTime Date { get; set; }
 
-        [ForeignKey("AccountToId")]
-        [InverseProperty("TransactionsTo")]
-        public virtual Account AccountTo { get; set; }
+		[Required]
+		public string Message { get; set; }
 
-        [ForeignKey("AccountFromId")]
-        [InverseProperty("TransactionsFrom")]
-        public virtual Account AccountFrom { get; set; }
+        [ForeignKey("AccountId")]
+        public virtual Account Account { get; set; }
     }
 }

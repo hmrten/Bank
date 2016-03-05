@@ -118,19 +118,15 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataAccess\BankContext.cs" />
     <Compile Include="DataAccess\BankRepository.cs" />
-    <Compile Include="DataAccess\IBankRepository.cs" />
+    <Compile Include="DataAccess\IAccountRepository.cs" />
+    <Compile Include="DataAccess\ICustomerRepository.cs" />
     <Compile Include="DataAccess\MockRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603031252424_v1.cs" />
-    <Compile Include="Migrations\201603031252424_v1.Designer.cs">
-      <DependentUpon>201603031252424_v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Transaction.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,11 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603031252424_v1.resx">
-      <DependentUpon>201603031252424_v1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
