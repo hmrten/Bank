@@ -115,15 +115,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BankController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="DataAccess\EFAccountRepository.cs" />
     <Compile Include="DataAccess\BankContext.cs" />
-    <Compile Include="DataAccess\BankRepository.cs" />
+    <Compile Include="DataAccess\EFCustomerRepository.cs" />
     <Compile Include="DataAccess\IAccountRepository.cs" />
     <Compile Include="DataAccess\ICustomerRepository.cs" />
-    <Compile Include="DataAccess\MockRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603052345215_Create.cs" />
+    <Compile Include="Migrations\201603052345215_Create.Designer.cs">
+      <DependentUpon>201603052345215_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -134,11 +139,11 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Bank\Index.cshtml" />
-    <Content Include="Views\User\Accounts.cshtml" />
-    <Content Include="Views\Bank\Deposit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -148,6 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603052345215_Create.resx">
+      <DependentUpon>201603052345215_Create.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

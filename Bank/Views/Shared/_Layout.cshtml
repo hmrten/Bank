@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - MårtenBank</title>
+    <title>@ViewBag.Title - Bank of Mårten</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-flatly.min.css" rel="stylesheet" type="text/css" />
@@ -18,14 +18,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MårtenBank", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Bank of Mårten", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Users", "Index", "User")</li>
                     <li>@Html.ActionLink("Accounts", "Index", "Account")</li>
                     <li>@Html.ActionLink("Transactions", "Transactions", "Bank")</li>  
                 </ul>
+				<p class="navbar-text navbar-right">Logged in as @Session["customerName"]</p>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Customer <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>@Html.ActionLink("John", "Select", "Customer", new { id = 1 }, null)</li>
+							<li>@Html.ActionLink("Jane", "Select", "Customer", new { id = 2 }, null)</li>
+						</ul>
+					</li>
+				</ul>
             </div>
         </div>
     </div>
@@ -34,11 +45,11 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - MårtenBank</p>
+            <p>&copy; @DateTime.Now.Year - Bank of Mårten</p>
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

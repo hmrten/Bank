@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Bank.DataAccess
 {
-	interface ICustomerRepository
+	public interface ICustomerRepository
 	{
-		public IQueryable<Customer> Customers { get; }
+		IQueryable<Customer> Customers { get; }
 
-		Customer Find(int id);
 		Customer Create(Customer cust);
+		Customer Find(int id);
 	}
 }

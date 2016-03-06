@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Bank.DataAccess
 {
-	interface IAccountRepository
+	public interface IAccountRepository
 	{
-		Account Find(int id);
 		Account Create(Account account);
+		Account Find(int id);
 		Account Delete(int id);
-		Account Lock();
-		Account Unlock();
+		Account Lock(int id);
+		Account Unlock(int id);
 	}
 }

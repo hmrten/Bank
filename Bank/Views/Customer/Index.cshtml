@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Bank.Models.User>
+﻿@model IEnumerable<Bank.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -11,6 +11,9 @@
 </p>
 <table class="table">
     <tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Id)
+		</th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -19,11 +22,14 @@
 
 @foreach (var item in Model) {
     <tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Id)
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Accounts", "Accounts", new { id=item.Id })
+            @Html.ActionLink("Accounts", "ForCustomer", "Account", new { id = item.Id }, null)
         </td>
     </tr>
 }

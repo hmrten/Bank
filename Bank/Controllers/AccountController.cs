@@ -10,40 +10,38 @@ namespace Bank.Controllers
 {
     public class AccountController : Controller
     {
-        private IBankRepository repo;
+		ICustomerRepository custRepo;
+		IAccountRepository accRepo;
 
-        public AccountController(IBankRepository repo)
+		private int SessionId()
+		{
+			return int.Parse(Session["customerId"].ToString());
+		}
+
+		public AccountController()
+		{
+			custRepo = new EFCustomerRepository();
+			accRepo = new EFAccountRepository();
+		}
+
+        public ViewResult Index()
         {
-            this.repo = repo;
+			int custId = SessionId();
+			var cust = custRepo.Find(custId);
+			return View(cust.Accounts);
         }
 
-        public AccountController()
-        {
-            repo = new BankRepository();
-        }
+		public RedirectToRouteResult Create()
+		{
+			int id = SessionId();
+			accRepo.Create(new Account { CustomerId = id });
+			return RedirectToAction("Index");
+		}
 
-        public RedirectToRouteResult Create(int id)
-        {
-            repo.CreateAccount(id);
-            return RedirectToAction("Accounts", "User", new { id = id });
-        }
-
-        public RedirectToRouteResult Lock(int id)
-        {
-            var account = repo.LockAccount(id);
-            return RedirectToAction("Accounts", "User", new { id = account.UserId });
-        }
-
-        public RedirectToRouteResult Unlock(int id)
-        {
-            var account = repo.UnlockAccount(id);
-            return RedirectToAction("Accounts", "User", new { id = account.UserId });
-        }
-
-        public RedirectToRouteResult Delete(int id)
-        {
-            var account = repo.DeleteAccount(id);
-            return RedirectToAction("Accounts", "User", new { id = account.UserId });
-        }
+		public RedirectToRouteResult Delete(int id)
+		{
+			accRepo.Delete(id);
+			return RedirectToAction("Index");
+		}
     }
 }
